@@ -50,7 +50,7 @@ import qualified Data.Map        as M
 myTerminal = "terminator"
 
 -- The command to lock the screen or show the screensaver.
-myScreensaver = "dm-tool switch-to-greeter"
+myScreensaver = "~/.xmonad/i3lock.sh"
 
 -- The command to take a selective screenshot, where you select
 -- what you'd like to capture on the screen.
@@ -260,7 +260,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   [ ((modMask .|. shiftMask, xK_Return),
      spawn $ XMonad.terminal conf)
 
-  -- Lock the screen using command specified by myScreensaver.
+  -- Lock the screen using command specified by yScreensaver.
   , ((modMask, xK_0),
      spawn myScreensaver)
 
