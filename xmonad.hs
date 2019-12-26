@@ -47,7 +47,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal = "termite"
+myTerminal = "terminator"
 
 -- The command to lock the screen or show the screensaver.
 myScreensaver = "dm-tool switch-to-greeter"
@@ -61,7 +61,7 @@ myScreenshot = "xfce4-screenshooter"
 
 -- The command to use as a launcher, to launch commands that don't have
 -- preset keybindings.
-myLauncher = "rofi -show"
+myLauncher = "rofi -show run"
 
 
 
@@ -88,7 +88,8 @@ myWorkspaces = ["1: term","2: web","3: code","4: media"] ++ map show [5..9]
 --
 myManageHook = composeAll
     [
-      className =? "Google-chrome"                --> doShift "2:web"
+      className =? "Google-chrome"                --> doShift "2: web"
+    , className =? "terminator"                   --> doShift "1: term"
     , resource  =? "desktop_window"               --> doIgnore
     , className =? "Galculator"                   --> doCenterFloat
     , className =? "Steam"                        --> doCenterFloat
@@ -98,8 +99,8 @@ myManageHook = composeAll
     , className =? "Pavucontrol"                  --> doCenterFloat
     , className =? "Mate-power-preferences"       --> doCenterFloat
     , className =? "Xfce4-power-manager-settings" --> doCenterFloat
-    , className =? "VirtualBox"                   --> doShift "4:vm"
-    , className =? "Xchat"                        --> doShift "5:media"
+    , className =? "VirtualBox"                   --> doShift "4: vm"
+    , className =? "Xchat"                        --> doShift "5: media"
     , className =? "stalonetray"                  --> doIgnore
     , isFullscreen                                --> (doF W.focusDown <+> doFullFloat)
     -- , isFullscreen                             --> doFullFloat
