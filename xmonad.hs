@@ -54,10 +54,10 @@ myScreensaver = "~/.xmonad/i3lock.sh"
 
 -- The command to take a selective screenshot, where you select
 -- what you'd like to capture on the screen.
-mySelectScreenshot = "select-screenshot"
+mySelectScreenshot = "DATE=$(date +%Y-%m-%d-%H.%M.%S); gnome-screenshot -a -f /home/rishav/Desktop/Screenshot-$DATE.png"
 
 -- The command to take a fullscreen screenshot.
-myScreenshot = "xfce4-screenshooter"
+myScreenshot = "DATE=$(date +%Y-%m-%d-%H.%M.%S); gnome-screenshot -f /home/rishav/Desktop/Screenshot-$DATE.png"
 
 -- The command to use as a launcher, to launch commands that don't have
 -- preset keybindings.
@@ -282,7 +282,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Mute volume.
   , ((0, xF86XK_AudioMute),
-     spawn "amixer -q set Master toggle")
+     spawn "amixer -D pulse set Master toggle")
 
   -- Decrease volume.
   , ((0, xF86XK_AudioLowerVolume),
